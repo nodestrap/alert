@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/alert",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A UI for displaying feedback messages.",
   "type": "module",
   "main": "dist/Alert.jsx",
