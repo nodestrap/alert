@@ -1,0 +1,48 @@
+{
+  "name": "@nodestrap/alert",
+  "version": "4.0.0",
+  "description": "A UI for displaying feedback messages.",
+  "type": "module",
+  "main": "dist/Alert.jsx",
+  "types": "dist/Alert.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodestrap/alert.git"
+  },
+  "keywords": [
+    "alert",
+    "warning",
+    "messages",
+    "notifications",
+    "feedbacks",
+    "component",
+    "element",
+    "react",
+    "nodestrap",
+    "styled"
+  ],
+  "author": "heymarco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nodestrap/alert/issues"
+  },
+  "homepage": "https://github.com/nodestrap/alert#readme",
+  "dependencies": {
+    "@cssfn/css-config": "^1.0.1",
+    "@cssfn/cssfn": "^1.0.3",
+    "@cssfn/react-cssfn": "^1.0.3",
+    "@nodestrap/basic": "^4.0.2",
+    "@nodestrap/close-button": "^4.0.1",
+    "@nodestrap/content": "^4.0.2",
+    "@nodestrap/element": "^4.0.1",
+    "@nodestrap/icon": "^4.0.3",
+    "@nodestrap/popup": "^4.0.1",
+    "@nodestrap/spacers": "^4.0.1",
+    "@nodestrap/utilities": "^4.0.0",
+    "@types/react": "^17.0.36",
+    "react": "^17.0.2"
+  }
+}
