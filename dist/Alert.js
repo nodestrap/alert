@@ -163,9 +163,11 @@ export function Alert(props) {
     const iconFn = (() => {
         // default (unset) or string:
         if ((icon === undefined) || (typeof icon === 'string'))
-            return (<Icon 
+            return (React.createElement(Icon
             // appearances:
-            icon={icon ?? (() => {
+            , { 
+                // appearances:
+                icon: icon ?? (() => {
                     switch (props.theme) {
                         case 'success': return 'check_circle';
                         case 'warning': return 'warning';
@@ -177,35 +179,31 @@ export function Alert(props) {
                         // case 'dark'      :
                         default: return 'info';
                     } // switch
-                })()} 
-            // variants:
-            size='md' theme={props.theme} mild={!mildFn} 
-            // classes:
-            classes={[
+                })(), 
+                // variants:
+                size: 'md', theme: props.theme, mild: !mildFn, 
+                // classes:
+                classes: [
                     'icon', // inject icon class
-                ]}/>);
+                ] }));
         // nodestrap's component:
         if (isTypeOf(icon, Element))
-            return (<icon.type 
+            return (React.createElement(icon.type
             // other props:
-            {...icon.props} 
-            // classes:
-            classes={[...(icon.props.classes ?? []),
+            , { ...icon.props, 
+                // classes:
+                classes: [...(icon.props.classes ?? []),
                     'icon', // inject icon class
-                ]}/>);
+                ] }));
         // other component:
-        return icon && (<div 
-        // classes:
-        className='icon'>
-                {icon}
-            </div>);
+        return icon && (React.createElement("div", { 
+            // classes:
+            className: 'icon' }, icon));
     })();
     const bodyFn = (() => {
-        return body && (<div 
-        // classes:
-        className='body'>
-                {body}
-            </div>);
+        return body && (React.createElement("div", { 
+            // classes:
+            className: 'body' }, body));
     })();
     const controlFn = (() => {
         // handlers:
@@ -217,51 +215,46 @@ export function Alert(props) {
         });
         // default (unset):
         if (control === undefined)
-            return (<CloseButton 
+            return (React.createElement(CloseButton
             // variants:
-            size='xs' 
-            // classes:
-            classes={[
+            , { 
+                // variants:
+                size: 'xs', 
+                // classes:
+                classes: [
                     'control', // inject control class
-                ]} 
-            // actions:
-            onClick={handleClose}/>);
+                ], 
+                // actions:
+                onClick: handleClose }));
         // nodestrap's component:
         if (isTypeOf(control, Element))
-            return (<control.type 
+            return (React.createElement(control.type
             // other props:
-            {...control.props} 
-            // classes:
-            classes={[...(control.props.classes ?? []),
+            , { ...control.props, 
+                // classes:
+                classes: [...(control.props.classes ?? []),
                     'control', // inject control class
-                ]} 
-            // actions:
-            onClick={(e) => {
+                ], 
+                // actions:
+                onClick: (e) => {
                     control.props.onClick?.(e);
                     handleClose?.(e);
-                }}/>);
+                } }));
         // other component:
-        return control && (<div 
-        // classes:
-        className='control'>
-                {control}
-            </div>);
+        return control && (React.createElement("div", { 
+            // classes:
+            className: 'control' }, control));
     })();
     // jsx:
-    return (<Popup 
-    // other props:
-    {...restProps} 
-    // semantics:
-    semanticTag={props.semanticTag ?? [null]} semanticRole={props.semanticRole ?? 'alert'} 
-    // variants:
-    mild={mildFn} 
-    // classes:
-    mainClass={props.mainClass ?? sheet.main}>
-            {iconFn}
-            
-            {bodyFn}
-            
-            {controlFn}
-        </Popup>);
+    return (React.createElement(Popup, { ...restProps, 
+        // semantics:
+        semanticTag: props.semanticTag ?? [null], semanticRole: props.semanticRole ?? 'alert', 
+        // variants:
+        mild: mildFn, 
+        // classes:
+        mainClass: props.mainClass ?? sheet.main },
+        iconFn,
+        bodyFn,
+        controlFn));
 }
 export { Alert as default };
