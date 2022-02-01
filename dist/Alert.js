@@ -3,9 +3,11 @@ import { default as React, } from 'react'; // base technology of our nodestrap c
 // cssfn:
 import { 
 // compositions:
-composition, mainComposition, imports, 
-// layouts:
-layout, children, } from '@cssfn/cssfn'; // cssfn core
+mainComposition, 
+// styles:
+style, imports, 
+//combinators:
+children, } from '@cssfn/cssfn'; // cssfn core
 import { 
 // hooks:
 createUseSheet, } from '@cssfn/react-cssfn'; // cssfn for react
@@ -14,13 +16,6 @@ import { createCssConfig,
 usesGeneralProps, usesPrefixedProps, usesSuffixedProps, overwriteProps, } from '@cssfn/css-config'; // Stores & retrieves configuration using *css custom properties* (css variables)
 // nodestrap utilities:
 import spacers from '@nodestrap/spacers'; // configurable spaces defs
-import { 
-// utilities:
-isTypeOf, } from '@nodestrap/utilities';
-// nodestrap components:
-import { 
-// react components:
-Element, } from '@nodestrap/element';
 import { 
 // hooks:
 usesSizeVariant, } from '@nodestrap/basic';
@@ -37,13 +32,13 @@ const iconElm = '.icon';
 const bodyElm = '.body';
 const controlElm = '.control';
 export const usesAlertLayout = () => {
-    return composition([
-        imports([
+    return style({
+        ...imports([
             // layouts:
             usesPopupLayout(),
             usesContentLayout(),
         ]),
-        layout({
+        ...style({
             // layouts:
             display: 'grid',
             // explicit areas:
@@ -65,79 +60,69 @@ export const usesAlertLayout = () => {
             justifyItems: 'stretch',
             alignItems: 'stretch',
             // children:
-            ...children(iconElm, [
-                layout({
-                    // layouts:
-                    gridArea: '1 / -3',
-                    // sizes:
-                    justifySelf: 'center',
-                    alignSelf: 'start',
-                    // customize:
-                    ...usesGeneralProps(usesPrefixedProps(cssProps, 'icon')), // apply general cssProps starting with icon***
-                }),
-            ]),
-            ...children(bodyElm, [
-                layout({
-                    // layouts:
-                    gridArea: 'body',
-                    // customize:
-                    ...usesGeneralProps(usesPrefixedProps(cssProps, 'body')), // apply general cssProps starting with body***
-                }),
-            ]),
-            ...children(controlElm, [
-                layout({
-                    // layouts:
-                    gridArea: '1 / 2',
-                    // sizes:
-                    justifySelf: 'center',
-                    alignSelf: 'start',
-                    // customize:
-                    ...usesGeneralProps(usesPrefixedProps(cssProps, 'control')), // apply general cssProps starting with control***
-                }),
-            ]),
+            ...children(iconElm, {
+                // layouts:
+                gridArea: '1 / -3',
+                // sizes:
+                justifySelf: 'center',
+                alignSelf: 'start',
+                // customize:
+                ...usesGeneralProps(usesPrefixedProps(cssProps, 'icon')), // apply general cssProps starting with icon***
+            }),
+            ...children(bodyElm, {
+                // layouts:
+                gridArea: 'body',
+                // customize:
+                ...usesGeneralProps(usesPrefixedProps(cssProps, 'body')), // apply general cssProps starting with body***
+            }),
+            ...children(controlElm, {
+                // layouts:
+                gridArea: '1 / 2',
+                // sizes:
+                justifySelf: 'center',
+                alignSelf: 'start',
+                // customize:
+                ...usesGeneralProps(usesPrefixedProps(cssProps, 'control')), // apply general cssProps starting with control***
+            }),
             // customize:
             ...usesGeneralProps(cssProps), // apply general cssProps
         }),
-    ]);
+    });
 };
 export const usesAlertVariants = () => {
     // dependencies:
     // layouts:
-    const [sizes] = usesSizeVariant((sizeName) => composition([
-        layout({
-            // overwrites propName = propName{SizeName}:
-            ...overwriteProps(cssDecls, usesSuffixedProps(cssProps, sizeName)),
-        }),
-    ]));
-    return composition([
-        imports([
+    const [sizes] = usesSizeVariant((sizeName) => style({
+        // overwrites propName = propName{SizeName}:
+        ...overwriteProps(cssDecls, usesSuffixedProps(cssProps, sizeName)),
+    }));
+    return style({
+        ...imports([
             // variants:
             usesPopupVariants(),
             usesContentVariants(),
             // layouts:
             sizes(),
         ]),
-    ]);
+    });
 };
 export const usesAlertStates = () => {
-    return composition([
-        imports([
+    return style({
+        ...imports([
             // states:
             usesPopupStates(),
         ]),
-    ]);
+    });
 };
 export const useAlertSheet = createUseSheet(() => [
-    mainComposition([
-        imports([
-            // layouts:
-            usesAlertLayout(),
-            // variants:
-            usesAlertVariants(),
-            // states:
-            usesAlertStates(),
-        ]),
-    ]),
+    mainComposition(imports([
+        // layouts:
+        usesAlertLayout(),
+        // variants:
+        usesAlertVariants(),
+        // states:
+        usesAlertStates(),
+    ])),
 ], /*sheetId :*/ 'a5qyy5nbby'); // an unique salt for SSR support, ensures the server-side & client-side have the same generated class names
 // configs:
 export const [cssProps, cssDecls, cssVals, cssConfig] = createCssConfig(() => {
@@ -187,14 +172,13 @@ export function Alert(props) {
                     'icon', // inject icon class
                 ] }));
         // nodestrap's component:
-        if (isTypeOf(icon, Element))
-            return (React.createElement(icon.type
-            // other props:
-            , { ...icon.props, 
+        if (React.isValidElement(icon))
+            return React.cloneElement(icon, {
                 // classes:
                 classes: [...(icon.props.classes ?? []),
                     'icon', // inject icon class
-                ] }));
+                ],
+            });
         // other component:
         return icon && (React.createElement("div", { 
             // classes:
@@ -227,19 +211,18 @@ export function Alert(props) {
                 // actions:
                 onClick: handleClose }));
         // nodestrap's component:
-        if (isTypeOf(control, Element))
-            return (React.createElement(control.type
-            // other props:
-            , { ...control.props, 
+        if (React.isValidElement(control))
+            return React.cloneElement(control, {
                 // classes:
                 classes: [...(control.props.classes ?? []),
                     'control', // inject control class
-                ], 
+                ],
                 // actions:
                 onClick: (e) => {
                     control.props.onClick?.(e);
                     handleClose?.(e);
-                } }));
+                },
+            });
         // other component:
         return control && (React.createElement("div", { 
             // classes:

@@ -1,8 +1,8 @@
 import { default as React } from 'react';
 import { PopupPlacement, PopupModifier, PopupPosition, PopupProps } from '@nodestrap/popup';
-export declare const usesAlertLayout: () => import("@cssfn/cssfn").StyleCollection;
-export declare const usesAlertVariants: () => import("@cssfn/cssfn").StyleCollection;
-export declare const usesAlertStates: () => import("@cssfn/cssfn").StyleCollection;
+export declare const usesAlertLayout: () => import("@cssfn/cssfn").Rule;
+export declare const usesAlertVariants: () => import("@cssfn/cssfn").Rule;
+export declare const usesAlertStates: () => import("@cssfn/cssfn").Rule;
 export declare const useAlertSheet: import("@cssfn/types").Factory<import("jss").Classes<"main">>;
 export declare const cssProps: import("@cssfn/css-config").Refs<{
     gapInline: import("@cssfn/css-types").Cust.Ref;
