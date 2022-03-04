@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/alert",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "A UI for displaying feedback messages.",
   "type": "module",
   "main": "dist/Alert.js",
@@ -32,16 +32,16 @@
   "homepage": "https://github.com/nodestrap/alert#readme",
   "dependencies": {
     "@cssfn/css-config": "^1.0.4",
-    "@cssfn/cssfn": "^1.0.11",
+    "@cssfn/cssfn": "^1.0.12",
     "@cssfn/react-cssfn": "^1.0.11",
     "@nodestrap/basic": "^4.0.7",
     "@nodestrap/close-button": "^4.0.4",
-    "@nodestrap/content": "^4.0.10",
+    "@nodestrap/content": "^4.0.13",
     "@nodestrap/element": "^4.0.7",
-    "@nodestrap/icon": "^4.0.9",
-    "@nodestrap/popup": "^4.0.7",
+    "@nodestrap/icon": "^4.0.12",
+    "@nodestrap/popup": "^4.0.8",
     "@nodestrap/spacers": "^4.0.2",
-    "@types/react": "^17.0.38",
+    "@types/react": "^17.0.39",
     "react": "^17.0.2"
   }
 }

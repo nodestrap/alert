@@ -1,5 +1,5 @@
 import { default as React } from 'react';
-import { PopupPlacement, PopupModifier, PopupPosition, PopupProps } from '@nodestrap/popup';
+import { PopupPlacement, PopupMiddleware, PopupStrategy, PopupProps } from '@nodestrap/popup';
 export declare const usesAlertLayout: () => import("@cssfn/cssfn").Rule;
 export declare const usesAlertVariants: () => import("@cssfn/cssfn").Rule;
 export declare const usesAlertStates: () => import("@cssfn/cssfn").Rule;
@@ -22,4 +22,4 @@ export interface AlertProps<TElement extends HTMLElement = HTMLElement> extends 
 }
 export declare function Alert<TElement extends HTMLElement = HTMLElement>(props: AlertProps<TElement>): JSX.Element;
 export { Alert as default };
-export type { PopupPlacement, PopupModifier, PopupPosition };
+export type { PopupPlacement, PopupMiddleware, PopupStrategy };
