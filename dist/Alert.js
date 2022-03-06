@@ -143,7 +143,7 @@ export function Alert(props) {
     // children:
     icon, children: body, control, ...restProps } = props;
     // fn props:
-    const mildFn = props.mild ?? false;
+    const mildFn = props.mild ?? true;
     // jsx fn props:
     const iconFn = (() => {
         // default (unset) or string:
