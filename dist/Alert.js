@@ -22,7 +22,9 @@ usesSizeVariant, } from '@nodestrap/basic';
 import { 
 // styles:
 usesContentLayout, usesContentVariants, } from '@nodestrap/content';
-import Icon from '@nodestrap/icon';
+import { 
+// react components:
+Icon, } from '@nodestrap/icon';
 import CloseButton from '@nodestrap/close-button';
 import { 
 // styles:
@@ -166,7 +168,8 @@ export function Alert(props) {
                     } // switch
                 })(), 
                 // variants:
-                size: 'md', theme: props.theme, mild: !mildFn, 
+                size: 'md', theme: mildFn ? props.theme : undefined, 
+                // mild={!mildFn} // if not .mild => do not flip the .mild => instead use currentColor
                 // classes:
                 classes: [
                     'icon', // inject icon class

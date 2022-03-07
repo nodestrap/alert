@@ -1,4 +1,5 @@
 import { default as React } from 'react';
+import { IconList } from '@nodestrap/icon';
 import { PopupPlacement, PopupMiddleware, PopupStrategy, PopupProps } from '@nodestrap/popup';
 export declare const usesAlertLayout: () => import("@cssfn/cssfn").Rule;
 export declare const usesAlertVariants: () => import("@cssfn/cssfn").Rule;
@@ -16,7 +17,7 @@ export declare const cssProps: import("@cssfn/css-config").Refs<{
 }>, cssConfig: import("@cssfn/css-config").CssConfigSettings;
 export interface AlertProps<TElement extends HTMLElement = HTMLElement> extends PopupProps<TElement> {
     onActiveChange?: (newActive: boolean) => void;
-    icon?: React.ReactChild | boolean | null | string;
+    icon?: React.ReactChild | boolean | null | IconList;
     children?: React.ReactNode;
     control?: React.ReactChild | boolean | null;
 }
